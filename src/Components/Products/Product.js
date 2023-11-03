@@ -3,8 +3,12 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 const Product = (props) => {
   return (
-    <Col md={6} style={{ padding: "5%" }}>
-      <Card style={{ width: "18rem", margin: "0 auto" }}>
+    <Col md={6} style={{ padding: "2%" }}>
+      <Card
+        className="shadow-lg"
+        style={{ width: "18rem", margin: "0 auto" }}
+        key={props.id}
+      >
         <Card.Img variant="top" src={props.imageUrl} />
         <Card.Body>
           <Card.Title>{props.title}</Card.Title>

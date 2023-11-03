@@ -1,9 +1,10 @@
 import { Nav, Navbar, Container, Button } from "react-bootstrap";
 import "./NavBar.css";
 
-const NavBar = () => {
+const NavBar = (props) => {
+  //   console.log("inside nav bar");
   return (
-    <Navbar expand="lg" className="custom-navbar">
+    <Navbar expand="lg" bg="dark" variant="dark">
       <Container>
         <Navbar.Brand
           href="#home"
@@ -34,7 +35,7 @@ const NavBar = () => {
             </Nav.Link>
           </Nav>
         </Navbar.Collapse>
-        <Button>Cart</Button>
+        <Button onClick={props.onShowCart}>Cart</Button>
       </Container>
     </Navbar>
   );

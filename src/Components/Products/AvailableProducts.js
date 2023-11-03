@@ -1,8 +1,9 @@
-import { Row } from "react-bootstrap";
+import { Container, Row } from "react-bootstrap";
 import Product from "./Product";
 
 const productsArr = [
   {
+    id: 1,
     title: "Colors",
 
     price: 100,
@@ -11,6 +12,7 @@ const productsArr = [
   },
 
   {
+    id: 2,
     title: "Black and white Colors",
 
     price: 50,
@@ -19,6 +21,7 @@ const productsArr = [
   },
 
   {
+    id: 3,
     title: "Yellow and Black Colors",
 
     price: 70,
@@ -27,6 +30,7 @@ const productsArr = [
   },
 
   {
+    id: 4,
     title: "Blue Color",
 
     price: 100,
@@ -38,12 +42,18 @@ const productsArr = [
 const AvailableProducts = (props) => {
   const productList = productsArr.map((product) => (
     <Product
+      key={product.id}
+      id={product.id}
       title={product.title}
       price={product.price}
       imageUrl={product.imageUrl}
     />
   ));
-  return <Row>{productList}</Row>;
+  return (
+    <Container className="mt-3">
+      <Row>{productList}</Row>
+    </Container>
+  );
 };
 
 export default AvailableProducts;
