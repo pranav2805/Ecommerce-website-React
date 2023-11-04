@@ -1,8 +1,15 @@
 import { Nav, Navbar, Container, Button } from "react-bootstrap";
+import React, { useContext } from "react";
 import "./NavBar.css";
+import CartContext from "../store/cart-context";
+import classes from "./HeaderCartButton.module.css";
+// import CartIcon from "../Cart/CartIcon";
 
 const NavBar = (props) => {
   //   console.log("inside nav bar");
+  const cartCtx = useContext(CartContext);
+  let quantity = cartCtx.items.length;
+
   return (
     <Navbar expand="lg" bg="dark" variant="dark">
       <Container>
@@ -35,7 +42,13 @@ const NavBar = (props) => {
             </Nav.Link>
           </Nav>
         </Navbar.Collapse>
-        <Button onClick={props.onShowCart}>Cart</Button>
+        <Button onClick={props.onShowCart}>
+          {/* <span className={classes.icon}>
+            <CartIcon />
+          </span> */}
+          <span>Your Cart</span>
+          <span className={classes.badge}>{quantity}</span>
+        </Button>
       </Container>
     </Navbar>
   );

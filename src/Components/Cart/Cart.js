@@ -1,48 +1,33 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Button, Modal, ListGroup, Row, Col, Form } from "react-bootstrap";
-
-const cartElements = [
-  {
-    id: 1,
-    title: "Colors",
-    price: 100,
-    imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%201.png",
-    quantity: 2,
-  },
-
-  {
-    id: 2,
-    title: "Black and white Colors",
-    price: 50,
-    imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%202.png",
-    quantity: 3,
-  },
-
-  {
-    id: 3,
-    title: "Yellow and Black Colors",
-    price: 70,
-    imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%203.png",
-    quantity: 1,
-  },
-];
+import { Modal, ListGroup } from "react-bootstrap";
+import CartContext from "../store/cart-context";
+import classes from "./Cart.module.css";
+import CartItem from "./CartItem";
 
 const Cart = (props) => {
-  const [cart, setCart] = useState(cartElements);
-  // const [showCart, setShowCart] = useState(false);
+  const cartCtx = useContext(CartContext);
+  const cartItems = cartCtx.items;
+  console.log("cartItems inside cart component", cartItems);
+  const mergedResult = {};
+  cartItems.forEach((item) => {
+    if (!mergedResult[item.id]) {
+      mergedResult[item.id] = { ...item };
+    } else {
+      mergedResult[item.id].quantity =
+        Number(mergedResult[item.id].quantity) + Number(item.quantity);
+    }
+  });
 
-  //   const addToCart = (product) => {
-  //     // setCart([...cart, product]);
+  //   const addToCartHandler = (product) => {
+  //     cartCtx.addItem(product);
   //   };
 
-  const removeFromCart = (product) => {
-    const updatedCart = cart.filter(
-      (item) => Number(item.id) !== Number(product.id)
-    );
-    setCart(updatedCart);
-  };
-
+  const itemsInCart = Object.values(mergedResult);
+  let totalPrice = 0;
+  itemsInCart.forEach(
+    (item) => (totalPrice += Number(item.price) * Number(item.quantity))
+  );
   return (
     // <Overlay>
     <div
@@ -55,55 +40,15 @@ const Cart = (props) => {
         </Modal.Header>
         <Modal.Body>
           <ListGroup>
-            {/* {cart.map((item) => (
-              <ListGroup.Item key={item.id}>
-                {item.title} - ${item.price}
-                <Button
-                  variant="danger"
-                  className="float-right"
-                  onClick={() => removeFromCart(item)}
-                >
-                  Remove
-                </Button>
-              </ListGroup.Item>
-            ))} */}
-            {cart.map((item) => (
-              <ListGroup.Item key={item.id}>
-                <Row>
-                  <Col md={8}>
-                    <span>{item.title}</span>
-                  </Col>
-                  <Col md={2}>
-                    <Form.Control
-                      type="number"
-                      value={item.quantity}
-                      min="1"
-                      onChange={(e) => {
-                        const updatedQuantity = parseInt(e.target.value, 10);
-                        if (!isNaN(updatedQuantity) && updatedQuantity >= 1) {
-                          item.quantity = updatedQuantity;
-                          setCart([...cart]);
-                        }
-                      }}
-                    />
-                  </Col>
-                  <Col md={2}>
-                    <span>${item.price}</span>
-                  </Col>
-                  <Col md={2}>
-                    <Button
-                      variant="danger"
-                      className="float-right"
-                      onClick={() => removeFromCart(item)}
-                    >
-                      Remove
-                    </Button>
-                  </Col>
-                </Row>
-              </ListGroup.Item>
+            {itemsInCart.map((item) => (
+              <CartItem item={item} />
             ))}
           </ListGroup>
         </Modal.Body>
+        <Modal.Footer className={classes.total}>
+          <span>Total Amount:</span>
+          <span>${totalPrice}</span>
+        </Modal.Footer>
       </Modal>
     </div>
     // </Overlay>
