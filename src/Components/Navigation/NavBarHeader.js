@@ -22,12 +22,12 @@ const NavBarHeader = (props) => {
         </Navbar.Brand>
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav>
-            <NavLink
-              as={NavLink}
+            {/* <NavLink
               to="/home"
               className={(isActive) => (isActive ? classes.active : undefined)}
               style={{ color: "white", marginRight: "10%" }}
-            >
+            > */}
+            <NavLink to="/home" style={{ color: "white", marginRight: "10%" }}>
               HOME
             </NavLink>
             <NavLink to="/store" style={{ color: "white", marginRight: "10%" }}>
