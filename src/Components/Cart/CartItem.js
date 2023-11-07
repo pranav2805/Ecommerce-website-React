@@ -10,7 +10,7 @@ import {
 } from "react-bootstrap";
 import CartContext from "../store/cart-context";
 
-const cartItem = (props) => {
+const CartItem = (props) => {
   const item = props.item;
   const cartCtx = useContext(CartContext);
   const removeFromCartHandler = (product) => {
@@ -57,4 +57,4 @@ const cartItem = (props) => {
   );
 };
 
-export default cartItem;
+export default CartItem;

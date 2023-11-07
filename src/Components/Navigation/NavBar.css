@@ -6,3 +6,8 @@
 .custom-container {
   color: white;
 }
+
+.a:hover,
+.a:active {
+  text-decoration: underline;
+}
