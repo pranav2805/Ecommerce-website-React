@@ -6,6 +6,7 @@ import { Routes, Route } from "react-router-dom";
 import About from "./Components/AboutPage/About";
 import AvailableTours from "./Components/HomePage/AvailableTours";
 import { Fragment } from "react";
+import ContactUs from "./Components/ContactPage/ContactUs";
 
 // const router = createBrowserRouter([
 //   {
@@ -40,6 +41,7 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/home" element={<AvailableTours />} />
         <Route path="/store" element={<Products />} />
+        <Route path="/contactus" element={<ContactUs />} />
       </Routes>
 
       {/* <NavBarHeader onShowCart={showCartHandler} />

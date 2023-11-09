@@ -36,6 +36,9 @@ const NavBarHeader = (props) => {
             <NavLink to="/about" style={{ color: "white", marginRight: "10%" }}>
               ABOUT
             </NavLink>{" "}
+            <NavLink to="/contactus" style={{ color: "white" }}>
+              CONTACTUS
+            </NavLink>{" "}
           </Nav>
         </Navbar.Collapse>
         <Button onClick={props.onShowCart}>
