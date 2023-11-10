@@ -2,6 +2,7 @@ import { Col, Card, Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useContext } from "react";
 import CartContext from "../store/cart-context";
+import { Link } from "react-router-dom";
 
 const Product = (props) => {
   const cartCtx = useContext(CartContext);
@@ -13,15 +14,22 @@ const Product = (props) => {
     console.log(cartCtx.items);
   };
   return (
+    // <Link to={`products/${props.id}`}>
     <Col md={6} style={{ padding: "2%" }}>
       <Card
         className="shadow-lg"
-        style={{ width: "18rem", margin: "0 auto" }}
+        style={{ width: "18rem", margin: "0 auto", height: "100%" }}
         key={props.id}
       >
-        <Card.Img variant="top" src={props.imageUrl} />
+        <Card.Img
+          style={{ objectFit: "cover", height: "100%" }}
+          variant="top"
+          src={props.imageUrl}
+        />
         <Card.Body>
-          <Card.Title>{props.title}</Card.Title>
+          <Link to={`products/${props.id}`}>
+            <Card.Title>{props.title}</Card.Title>
+          </Link>
           <Card.Text>${props.price}</Card.Text>
           <Button variant="primary" onClick={addItemToCartHandler}>
             Add to Cart
@@ -29,6 +37,7 @@ const Product = (props) => {
         </Card.Body>
       </Card>
     </Col>
+    // </Link>
   );
 };
 

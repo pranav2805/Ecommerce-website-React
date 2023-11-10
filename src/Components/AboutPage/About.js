@@ -1,6 +1,7 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Container, Row, Col, Card, Button } from "react-bootstrap";
+import { Link } from "react-router-dom/cjs/react-router-dom";
 import classes from "./About.module.css";
 
 function About() {
@@ -41,9 +42,11 @@ function About() {
         </Col>
       </Row>
 
-      <Button variant="primary" href="/contact">
-        Contact Us
-      </Button>
+      <Link to="/contactus">
+        <Button variant="primary" href="/contact">
+          Contact Us
+        </Button>
+      </Link>
     </Container>
   );
 }

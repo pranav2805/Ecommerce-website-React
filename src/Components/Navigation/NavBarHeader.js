@@ -1,4 +1,4 @@
-import { Nav, Navbar, Container, Button } from "react-bootstrap";
+import { Navbar, Container, Button } from "react-bootstrap";
 import React, { useContext } from "react";
 import "./NavBar.css";
 import CartContext from "../store/cart-context";
@@ -21,25 +21,25 @@ const NavBarHeader = (props) => {
           E-Commerce Website
         </Navbar.Brand>
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav>
-            {/* <NavLink
+          {/* <Nav> */}
+          {/* <NavLink
               to="/home"
               className={(isActive) => (isActive ? classes.active : undefined)}
               style={{ color: "white", marginRight: "10%" }}
             > */}
-            <NavLink to="/home" style={{ color: "white", marginRight: "10%" }}>
-              HOME
-            </NavLink>
-            <NavLink to="/store" style={{ color: "white", marginRight: "10%" }}>
-              STORE
-            </NavLink>
-            <NavLink to="/about" style={{ color: "white", marginRight: "10%" }}>
-              ABOUT
-            </NavLink>{" "}
-            <NavLink to="/contactus" style={{ color: "white" }}>
-              CONTACTUS
-            </NavLink>{" "}
-          </Nav>
+          <NavLink to="/home" style={{ color: "white", marginRight: "5%" }}>
+            HOME
+          </NavLink>
+          <NavLink to="/store" style={{ color: "white", marginRight: "5%" }}>
+            STORE
+          </NavLink>
+          <NavLink to="/about" style={{ color: "white", marginRight: "5%" }}>
+            ABOUT
+          </NavLink>{" "}
+          <NavLink to="/contactus" style={{ color: "white" }}>
+            CONTACT US
+          </NavLink>{" "}
+          {/* </Nav> */}
         </Navbar.Collapse>
         <Button onClick={props.onShowCart}>
           {/* <span className={classes.icon}>
