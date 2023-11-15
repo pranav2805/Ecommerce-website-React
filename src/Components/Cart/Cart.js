@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Modal, ListGroup } from "react-bootstrap";
-import CartContext from "../store/cart-context";
+import CartContext from "../../store/cart-context";
 import classes from "./Cart.module.css";
 import CartItem from "./CartItem";
 

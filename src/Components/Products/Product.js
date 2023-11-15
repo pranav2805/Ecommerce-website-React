@@ -1,7 +1,7 @@
 import { Col, Card, Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useContext } from "react";
-import CartContext from "../store/cart-context";
+import CartContext from "../../store/cart-context";
 import { Link } from "react-router-dom";
 
 const Product = (props) => {

@@ -1,13 +1,15 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import NavBarHeader from "./Components/Navigation/NavBarHeader";
 import Products from "./Components/Products/Products";
 import Cart from "./Components/Cart/Cart";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 import About from "./Components/AboutPage/About";
 import AvailableTours from "./Components/HomePage/AvailableTours";
 import { Fragment } from "react";
 import ContactUs from "./Components/ContactPage/ContactUs";
 import ProductDetail from "./Components/Products/ProductDetail";
+import AuthPage from "./Pages/AuthPage";
+import AuthContext from "./store/auth-context";
 
 // const router = createBrowserRouter([
 //   {
@@ -31,6 +33,8 @@ function App() {
     setCartIsShown(false);
   };
 
+  const authCtx = useContext(AuthContext);
+
   return (
     // <Router>
     //
@@ -47,6 +51,11 @@ function App() {
         <Route path="products/:id" element={<ProductDetail />} /> */}
       {/* </Routes> */}
       <Switch>
+        {!authCtx.isLoggedIn && (
+          <Route path="/auth">
+            <AuthPage />
+          </Route>
+        )}
         <Route path="/about">
           <About />
         </Route>
@@ -54,13 +63,17 @@ function App() {
           <AvailableTours />
         </Route>
         <Route path="/store">
-          <Products />
+          {authCtx.isLoggedIn && <Products />}
+          {!authCtx.isLoggedIn && <Redirect to="/auth" />}
         </Route>
         <Route path="/contactus">
           <ContactUs />
         </Route>
         <Route path="/products/:id">
           <ProductDetail />
+        </Route>
+        <Route path="*">
+          <Redirect to="/home" />
         </Route>
       </Switch>
 

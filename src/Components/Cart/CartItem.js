@@ -1,14 +1,14 @@
 import { useContext } from "react";
 import {
   Button,
-  Modal,
+  // Modal,
   ListGroup,
   Row,
   Col,
   Form,
   Card,
 } from "react-bootstrap";
-import CartContext from "../store/cart-context";
+import CartContext from "../../store/cart-context";
 
 const CartItem = (props) => {
   const item = props.item;
