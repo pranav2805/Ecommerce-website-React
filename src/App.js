@@ -1,11 +1,11 @@
-import { useContext, useState } from "react";
+import { useContext, useState, Fragment } from "react";
+import { Route, Switch, Redirect } from "react-router-dom";
+
 import NavBarHeader from "./Components/Navigation/NavBarHeader";
 import Products from "./Components/Products/Products";
 import Cart from "./Components/Cart/Cart";
-import { Route, Switch, Redirect } from "react-router-dom";
 import About from "./Components/AboutPage/About";
 import AvailableTours from "./Components/HomePage/AvailableTours";
-import { Fragment } from "react";
 import ContactUs from "./Components/ContactPage/ContactUs";
 import ProductDetail from "./Components/Products/ProductDetail";
 import AuthPage from "./Pages/AuthPage";
@@ -36,8 +36,6 @@ function App() {
   const authCtx = useContext(AuthContext);
 
   return (
-    // <Router>
-    //
     <Fragment>
       {cartIsShown && <Cart onHideCart={hideCartHandler} />}
 
@@ -81,7 +79,6 @@ function App() {
       {/* <Products /> */}
       {/* <RouterProvider router={router} /> */}
     </Fragment>
-    // </Router>
   );
 }
 

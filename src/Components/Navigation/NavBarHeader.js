@@ -1,7 +1,7 @@
 import { Navbar, Container, Button } from "react-bootstrap";
 import React, { useContext } from "react";
 // import "./NavBar.css";
-import CartContext from "../store/cart-context";
+import CartContext from "../../store/cart-context";
 import classes from "./NavBar.module.css";
 import { NavLink, useHistory } from "react-router-dom";
 import AuthContext from "../../store/auth-context";
@@ -13,7 +13,6 @@ const NavBarHeader = (props) => {
   const authCtx = useContext(AuthContext);
 
   let quantity = cartCtx.items.length;
-
   const history = useHistory();
 
   const logoutHandler = () => {

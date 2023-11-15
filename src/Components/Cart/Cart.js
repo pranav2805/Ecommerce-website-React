@@ -41,7 +41,7 @@ const Cart = (props) => {
         <Modal.Body>
           <ListGroup>
             {itemsInCart.map((item) => (
-              <CartItem item={item} />
+              <CartItem key={item.id} item={item} />
             ))}
           </ListGroup>
         </Modal.Body>
