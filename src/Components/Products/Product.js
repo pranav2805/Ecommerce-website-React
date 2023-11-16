@@ -6,12 +6,25 @@ import { Link } from "react-router-dom";
 
 const Product = (props) => {
   const cartCtx = useContext(CartContext);
-  const addItemToCartHandler = (event) => {
+  const addItemToCartHandler = async (event) => {
     event.preventDefault();
     // console.log("inside add item cart handler");
     // console.log("cart items>>", cartCtx.items);
-    cartCtx.addItem(props.product);
-    console.log(cartCtx.items);
+    // cartCtx.addItem(props.product);
+    const email = localStorage.getItem("email").replace(/[@.]/g, "");
+
+    const newProduct = await fetch(
+      `https://crudcrud.com/api/b46745c9fa444afe80d607ced5664d71/cart${email}`,
+      {
+        method: "POST",
+        body: JSON.stringify(props.product),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    // console.log(cartCtx.items);
+    console.log(newProduct);
   };
   return (
     // <Link to={`products/${props.id}`}>

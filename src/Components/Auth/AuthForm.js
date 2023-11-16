@@ -45,7 +45,7 @@ const AuthForm = () => {
       const data = await resp.json();
       if (resp.ok) {
         // console.log("Token>>>", data.idToken);
-        authCtx.login(data.idToken);
+        authCtx.login(data.idToken, data.email);
         alert("Logged in successfully");
         history.replace("/home");
       } else {

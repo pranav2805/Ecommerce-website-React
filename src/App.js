@@ -33,6 +33,15 @@ function App() {
     setCartIsShown(false);
   };
 
+  const fetchCartItemsHandler = async () => {
+    const email = localStorage.getItem("email").replace(/[@.]/g, "");
+    const resp = await fetch(
+      `https://crudcrud.com/api/b46745c9fa444afe80d607ced5664d71/cart${email}`
+    );
+    const data = await resp.json();
+    console.log("data>>", data);
+  };
+
   const authCtx = useContext(AuthContext);
 
   return (
